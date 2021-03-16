@@ -1,2 +1,2 @@
-# goit-react-hw-04-movies
 Homework 04
+https://github.com/goitacademy/react-homework/tree/master/homework-04
