@@ -1,32 +1,24 @@
 import "./App.css";
 import React, { Component } from "react";
-import { getPopular } from "./utils/apiServices";
+import { Route, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import Home from './views/Home';
+import Movies from './views/Movies';
 
 class App extends Component {
-  state = {
-    movies: null,
-  };
-  componentDidMount() {
-    getPopular()
-      .then(({ results }) => {
-        console.log(results);
-        this.setState({ movies: results })
-      })
-      .catch((error) => console.log(error))
-      .finally();
-  }
+ render () {
 
-  render() {
-    return (
-      <>
-        <h1>Header</h1>
-        <ul>
-          {this.state.movies &&
-            this.state.movies.map((movie) => <li>{movie.original_title}</li>)}
-        </ul>
-      </>
-    );
-  }
+  return (<>
+  <ul>
+    <li><NavLink to="/">Home</NavLink></li>
+    <li><NavLink to="/movies">Movies</NavLink></li>
+  </ul>
+<Switch>
+  <Route exact path="/" component={Home}/>
+  <Route path="/movies" component={Movies}/>
+</Switch>
+  </>)
+ }
 }
 
 export default App;
