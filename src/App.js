@@ -1,8 +1,9 @@
 import "./App.css";
 import React, { Component } from "react";
 import { Route, Switch, NavLink } from 'react-router-dom';
-import Home from './views/Home';
-import Movies from './views/Movies';
+import Home from './views/HomePage';
+import Movies from './views/MoviesPage';
+import MovieDetailsPage from './components/MovieDetailsPage'
 
 class App extends Component {
  render () {
@@ -15,6 +16,8 @@ class App extends Component {
 <Switch>
   <Route exact path="/" component={Home}/>
   <Route path="/movies" component={Movies}/>
+  <Route path="/:movieID" component={MovieDetailsPage}/>
+  <Route path="/movies/:movieID" component={MovieDetailsPage}/>
 </Switch>
   </>)
  }
