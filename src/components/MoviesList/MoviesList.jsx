@@ -13,19 +13,17 @@ class MoviesList extends Component {
     console.log('MoviesList componentDidMount', this.props);
   }
 
+
   render() {
+    const createUrl = this.props.match.url.includes('movies')
+      ? `${this.props.match.url}`
+      : `${this.props.match.url}movies/`;
     return (
       <ul className={styles.MoviesList}>
         {this.props.movies.map(({ id, title, poster_path, release_date }) => {
           return (
             <li key={id} className={styles.MoviesListItem}>
-              <Link
-                to={
-                  this.props.match.url.includes('movies')
-                    ? `${this.props.match.url}${id}`
-                    : `${this.props.match.url}movies/${id}`
-                }
-              >
+              <Link to={`${createUrl}${id}`}>
                 <MovieCard
                   title={title}
                   poster_path={poster_path}
