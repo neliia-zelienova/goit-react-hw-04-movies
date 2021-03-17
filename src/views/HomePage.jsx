@@ -18,9 +18,9 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props.match.url);
     return (
       <>
-        <h1>Header</h1>
         <ul>
           {this.state.movies && <MoviesList movies={this.state.movies} />}
         </ul>

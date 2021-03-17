@@ -7,7 +7,7 @@ const MovieCard = ({ title, poster_path, release_date }) => {
   return (
     <>
       <div className={styles.MoviePosterContainer}>
-        <img src={posterURL} alt="" className={styles.MoviePoster}/>
+        <img src={posterURL} alt="" className={styles.MoviePoster} />
       </div>
       <div className={styles.MovieInfoContainer}>
         <p className={styles.MovieTitle}>{title}</p>
