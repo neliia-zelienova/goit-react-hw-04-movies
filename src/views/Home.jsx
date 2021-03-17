@@ -1,14 +1,15 @@
 import React, {Component} from 'react'
 
 import { getPopular } from "../utils/apiServices";
+import MoviesList from '../components/MoviesList';
 
 
 class Home extends Component {
     state = {
         movies: null,
       };
-      componentDidMount() {
-        getPopular()
+     async componentDidMount() {
+      await getPopular()
           .then(({ results }) => {
             console.log(results);
             this.setState({ movies: results })
@@ -23,7 +24,7 @@ class Home extends Component {
             <h1>Header</h1>
             <ul>
               {this.state.movies &&
-                this.state.movies.map((movie) => <li>{movie.original_title}</li>)}
+              <MoviesList movies={this.state.movies} />}
             </ul>
           </>
         );

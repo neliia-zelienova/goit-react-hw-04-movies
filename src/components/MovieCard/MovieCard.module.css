@@ -1,0 +1,16 @@
+.MoviePosterContainer {
+    margin-bottom: 20px;
+}
+.MoviePoster{
+    width: 275px;
+}
+
+.MovieTitle {
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+
+.MovieInfoContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+}
