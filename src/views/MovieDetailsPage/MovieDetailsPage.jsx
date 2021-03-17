@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
 import { Switch, Route, NavLink } from 'react-router-dom';
 import styles from './MovieDetailsPage.module.css';
+import {getMovieById} from '../../utils/apiServices'
 
 
 class MovieDetailsPage extends Component {
     state = {
-        movie: null,
+        id: null,
+        posterUrl: null, 
+        original_title: null, 
+        vote_average: null, 
+        overview: null,
         genres: []
+    }
+
+    async componentDidMount () {
+        
     }
     
     render () {
-        const {posterUrl, original_title, vote_average, overview} = this.state.movie;
+        const {} = this.state.movie;
         return <div>
         <div>
             <img src={posterUrl} alt=""/>
