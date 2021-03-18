@@ -18,13 +18,10 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.match.url);
     return (
-      <>
-        <ul>
+        <div>
           {this.state.movies && <MoviesList movies={this.state.movies} />}
-        </ul>
-      </>
+        </div>
     );
   }
 }

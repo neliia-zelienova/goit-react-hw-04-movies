@@ -4,6 +4,7 @@ import styles from './MovieDetailsPage.module.css';
 import { getMovieById } from '../../utils/apiServices';
 import MovieCast from '../../components/MovieCast';
 import MovieReviews from '../../components/MovieReviews';
+import noPosterImg from '../../images/poster_no.png';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -48,11 +49,11 @@ class MovieDetailsPage extends Component {
   render() {
     const genresString = this.getGenreNamebyString();
     const { poster_path, original_title, vote_average, overview } = this.state;
-    const posterURL = `https://image.tmdb.org/t/p/w500${poster_path}`;
+    const posterURL = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : noPosterImg;
     return (
       <div>
         <div>
-          {posterURL && <img src={posterURL} alt="" />}
+          <img src={posterURL} alt="" />
         </div>
         <div>
           <h2>{original_title}</h2>

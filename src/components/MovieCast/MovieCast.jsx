@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import {getMovieCast} from '../utils/apiServices';
+import {getMovieCast} from '../../utils/apiServices';
+import styles from './MovieCast.module.css';
+import noUserImg from '../../images/no-user-photo.jpg';
 
 class MovieCast extends Component {
     state= {
@@ -19,10 +21,16 @@ class MovieCast extends Component {
         if (pasredData) return pasredData[0];
     } 
 
+    createUrl = (path) => {
+      return  path ? `https://image.tmdb.org/t/p/w500${path}` : noUserImg;
+    }
+
     render() {
-        return <ul>
-            {this.state.cast.map(item => <li key={item.cast_id}>
-                <img src={`https://image.tmdb.org/t/p/w500${item.profile_path}`} alt=""/>
+        return <ul className={styles.Cast_list}>
+            {this.state.cast.map(item => 
+            <li key={item.cast_id} className={styles.Actor_container}>
+                <img src={this.createUrl(item.profile_path)} alt=""
+                className={styles.Actor_img}/>
                 <p>{item.name}</p>
             </li> )}
         </ul>

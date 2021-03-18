@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {getMovieReviews} from '../utils/apiServices';
+import {getMovieReviews} from '../../utils/apiServices';
+import styles from './MovieReviews.module.css';
 
 class MovieReviews extends Component {
     state= {

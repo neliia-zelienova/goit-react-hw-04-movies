@@ -28,5 +28,11 @@ const getMovieReviews = id => {
   .then(response => response.data);
 }
 
+const searchMovie = query => {
+  return axios
+  .get(`/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`)
+  .then(response => response.data);
+}
 
-export { getPopular, getMovieById, getMovieCast, getMovieReviews};
+
+export { getPopular, getMovieById, getMovieCast, getMovieReviews, searchMovie};

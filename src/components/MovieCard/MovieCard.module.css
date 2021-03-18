@@ -8,6 +8,8 @@
 .MovieTitle {
   font-weight: 500;
   padding-bottom: 15px;
+  width: 200px;
+  overflow-wrap: normal;
 }
 
 .MovieInfoContainer {

@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './MovieCard.module.css';
+import noPosterImg from '../../images/poster_no.png';
 
 const MovieCard = ({ title, poster_path, release_date }) => {
-  const posterURL = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  const posterURL = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : noPosterImg;
   const releaseYear = release_date.slice(0, 4);
   return (
     <>

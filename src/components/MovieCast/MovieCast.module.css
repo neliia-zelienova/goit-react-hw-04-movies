@@ -1,0 +1,19 @@
+.Cast_list{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.Actor_container{
+    width: calc((100% / 6) - 25px * 5 );
+    overflow-wrap: normal;
+    text-align: center;
+}
+
+
+.Actor_img{
+    width: 100px;
+    border-radius: 25px;
+}

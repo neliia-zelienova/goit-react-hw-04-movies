@@ -5,18 +5,10 @@ import MovieCard from '../MovieCard';
 import styles from './MoviesList.module.css';
 
 class MoviesList extends Component {
-  // state = {
-  //     movies: []
-  // }
-
-  componentDidMount() {
-    console.log('MoviesList componentDidMount', this.props);
-  }
-
-
+  
   render() {
     const createUrl = this.props.match.url.includes('movies')
-      ? `${this.props.match.url}`
+      ? `${this.props.match.url}/`
       : `${this.props.match.url}movies/`;
     return (
       <ul className={styles.MoviesList}>
