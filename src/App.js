@@ -4,7 +4,6 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import HomePage from './views/HomePage';
 import MoviesPage from './views/MoviesPage';
 import MovieDetailsPage from './views/MovieDetailsPage/MovieDetailsPage';
-import { useImage } from 'react-image';
 
 class App extends Component {
   render() {

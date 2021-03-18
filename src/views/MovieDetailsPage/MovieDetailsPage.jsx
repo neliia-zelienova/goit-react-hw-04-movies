@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import styles from './MovieDetailsPage.module.css';
 import { getMovieById } from '../../utils/apiServices';
+import MovieCast from '../../components/MovieCast';
+import MovieReviews from '../../components/MovieReviews';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -64,6 +66,10 @@ class MovieDetailsPage extends Component {
           <h2>Additional information</h2>
           <NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink>
           <NavLink to={`${this.props.match.url}/reviews`}>Reviews</NavLink>
+          <Switch>
+              <Route exact path={`${this.props.match.url}/cast`} component={MovieCast}/>
+              <Route exact path={`${this.props.match.url}/reviews`} component={MovieReviews}/>
+          </Switch>
         </div>
       </div>
     );

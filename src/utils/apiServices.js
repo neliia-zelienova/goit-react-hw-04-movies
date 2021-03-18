@@ -16,5 +16,17 @@ const getMovieById = id => {
     .then(response => response.data);
 };
 
+const getMovieCast = id => {
+  return axios
+  .get(`/movie/${id}/credits?api_key=${API_KEY}&language=en-US`)
+  .then(response => response.data);
+}
 
-export { getPopular, getMovieById };
+const getMovieReviews = id => {
+  return axios
+  .get(`/movie/${id}/reviews?api_key=${API_KEY}&language=en-US`)
+  .then(response => response.data);
+}
+
+
+export { getPopular, getMovieById, getMovieCast, getMovieReviews};
