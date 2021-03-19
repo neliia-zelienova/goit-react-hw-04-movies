@@ -5,17 +5,21 @@ import MovieCard from '../MovieCard';
 import styles from './MoviesList.module.css';
 
 class MoviesList extends Component {
-  
   render() {
-    const createUrl = this.props.match.url.includes('movies')
-      ? `${this.props.match.url}/`
-      : `${this.props.match.url}movies/`;
     return (
       <ul className={styles.MoviesList}>
         {this.props.movies.map(({ id, title, poster_path, release_date }) => {
           return (
             <li key={id} className={styles.MoviesListItem}>
-              <Link to={`${createUrl}${id}`}>
+              <Link
+                to={{
+                  pathname: `/movies/${id}`,
+                  search: this.props.search,
+                  state: {
+                    from: this.props.location,
+                  },
+                }}
+              >
                 <MovieCard
                   title={title}
                   poster_path={poster_path}
@@ -24,7 +28,7 @@ class MoviesList extends Component {
               </Link>
             </li>
           );
-})}
+        })}
       </ul>
     );
   }

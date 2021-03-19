@@ -18,6 +18,8 @@ class MovieDetailsPage extends Component {
   };
 
   async componentDidMount() {
+    console.log(this.props.location.state);
+    console.log(this.props.location);
     const movieId = this.props.match.params.movieID;
     await getMovieById(movieId).then(
       ({
@@ -62,6 +64,7 @@ class MovieDetailsPage extends Component {
     const releaseYear = release_date.slice(0, 4);
     return (
       <>
+      <button type="button" onClick={() => this.props.history.push(this.props.location.state.from)}>Go back</button>
         <div className={styles.MainInfo_Container}>
           <div className={styles.Poster_Container}>
             <img className={styles.Movie_Poster} src={posterURL} alt="" />
