@@ -13,7 +13,7 @@ class MovieDetailsPage extends Component {
     original_title: null,
     vote_average: null,
     overview: null,
-    release_date: null,
+    release_date: '',
     genres: [],
   };
 
@@ -28,7 +28,7 @@ class MovieDetailsPage extends Component {
         overview,
         genres,
         release_date,
-      }) =>
+      }) => {
         this.setState({
           id,
           poster_path,
@@ -37,42 +37,81 @@ class MovieDetailsPage extends Component {
           overview,
           genres,
           release_date,
-        }),
+        });
+      },
     );
   }
 
-  getGenreNamebyString = () => {
+  getGenresString = () => {
     const genreName = this.state.genres.map(genre => genre.name);
     return genreName.join(', ');
   };
 
   render() {
-    const genresString = this.getGenreNamebyString();
-    const { poster_path, original_title, vote_average, overview } = this.state;
-    const posterURL = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : noPosterImg;
+    const genresString = this.getGenresString();
+    const {
+      poster_path,
+      original_title,
+      vote_average,
+      overview,
+      release_date,
+    } = this.state;
+    const posterURL = poster_path
+      ? `https://image.tmdb.org/t/p/w500${poster_path}`
+      : noPosterImg;
+    const releaseYear = release_date.slice(0, 4);
     return (
-      <div>
-        <div>
-          <img src={posterURL} alt="" />
+      <>
+        <div className={styles.MainInfo_Container}>
+          <div className={styles.Poster_Container}>
+            <img className={styles.Movie_Poster} src={posterURL} alt="" />
+          </div>
+          <div>
+            <h2
+              className={styles.Movie_title}
+            >{`${original_title} (${releaseYear})`}</h2>
+            <p>{`User score: ${vote_average * 10}%`}</p>
+            <h3 className={styles.Category_title}>Overview</h3>
+            <p>{overview}</p>
+            <h3 className={styles.Category_title}>Genres</h3>
+            <p>{genresString}</p>
+          </div>
         </div>
         <div>
-          <h2>{original_title}</h2>
-          <p>{vote_average}</p>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <p>{genresString}</p>
-        </div>
-        <div>
-          <h2>Additional information</h2>
-          <NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink>
-          <NavLink to={`${this.props.match.url}/reviews`}>Reviews</NavLink>
+          <h2 className={styles.Category_title}>Additional information</h2>
+          <div className={styles.AddInfo_container}>
+            <NavLink
+              exact
+              className={styles.AddInfo_link}
+              activeClassName={styles.AddInfo_active_link}
+              to={`${this.props.match.url}/cast`}
+            >
+              Cast
+            </NavLink>
+            <NavLink
+              exact
+              className={styles.AddInfo_link}
+              activeClassName={styles.AddInfo_active_link}
+              to={`${this.props.match.url}/reviews`}
+            >
+              Reviews
+            </NavLink>
+          </div>
+
           <Switch>
-              <Route exact path={`${this.props.match.url}/cast`} component={MovieCast}/>
-              <Route exact path={`${this.props.match.url}/reviews`} component={MovieReviews}/>
+            <Route
+              exact
+              path={`${this.props.match.url}/cast`}
+              component={MovieCast}
+            />
+            <Route
+              exact
+              path={`${this.props.match.url}/reviews`}
+              component={MovieReviews}
+            />
           </Switch>
         </div>
-      </div>
+      </>
     );
   }
 }

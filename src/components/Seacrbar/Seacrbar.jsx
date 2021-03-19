@@ -9,14 +9,12 @@ class Seacrbar extends Component {
 
   handleInput = e => {
     this.setState({
-      query: e.currentTarget.value,
+      query: e.currentTarget.value.replace(' ', '+'),
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-
-    console.log('this.props', this.props);
     this.props.onSubmit(this.state.query);
   };
 
@@ -30,7 +28,8 @@ class Seacrbar extends Component {
             onClick={this.handleSubmit}
           >
             <span className={styles.SearchForm__button__label}>Search</span>
-          </button></Link>
+          </button>
+        </Link>
 
         <input
           className={styles.SearchForm__input}

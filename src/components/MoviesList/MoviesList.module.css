@@ -1,20 +1,20 @@
-.MoviesList{
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
+.MoviesList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .MoviesListItem {
-    width: calc ((100% / 4) - 20px * 3);
-    border-radius: 5px;
-    overflow: hidden;
-    background-color: rgb(242, 238, 238, 0.4);
-    padding-bottom: 15px;
-    transition: box-shadow ease-in 250ms;
+  width: calc ((100% / 4) - 20px * 3);
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: rgb(242, 238, 238, 0.4);
+  padding-bottom: 15px;
+  transition: box-shadow ease-in 250ms;
 }
 
 .MoviesListItem:hover {
-    cursor: pointer;
-    box-shadow: 10px 10px 21px -4px rgba(0,0,0,0.75);;
+  cursor: pointer;
+  box-shadow: 10px 10px 21px -4px rgba(242, 131, 27, 0.75);
 }

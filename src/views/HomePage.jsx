@@ -10,7 +10,6 @@ class Home extends Component {
   async componentDidMount() {
     await getPopular()
       .then(({ results }) => {
-        console.log(results);
         this.setState({ movies: results });
       })
       .catch(error => console.log(error))
@@ -19,9 +18,9 @@ class Home extends Component {
 
   render() {
     return (
-        <div>
-          {this.state.movies && <MoviesList movies={this.state.movies} />}
-        </div>
+      <div>
+        {this.state.movies && <MoviesList movies={this.state.movies} />}
+      </div>
     );
   }
 }
