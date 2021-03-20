@@ -19,8 +19,6 @@ class MovieDetailsPage extends Component {
   };
 
   async componentDidMount() {
-    console.log(this.props.location.state);
-    console.log(this.props.location);
     const movieId = this.props.match.params.movieID;
     await getMovieById(movieId).then(
       ({
@@ -60,10 +58,6 @@ class MovieDetailsPage extends Component {
 
   render() {
     const genresString = this.getGenresString();
-    const internalLinksGoBack =
-      this.props.location.state 
-        ? this.props.location.state
-        : 'underfind';
     const {
       poster_path,
       original_title,
@@ -71,6 +65,8 @@ class MovieDetailsPage extends Component {
       overview,
       release_date,
     } = this.state;
+    const { location, match, search } = this.props;
+    const internalLinksGoBack = location.state ? location.state : 'underfind';
     const posterURL = poster_path
       ? `https://image.tmdb.org/t/p/w500${poster_path}`
       : noPosterImg;
@@ -107,10 +103,9 @@ class MovieDetailsPage extends Component {
               className={styles.AddInfo_link}
               activeClassName={styles.AddInfo_active_link}
               to={{
-                pathname: `${this.props.match.url}/cast`,
-                search: this.props.search,
+                pathname: `${match.url}/cast`,
+                search: search,
                 state: internalLinksGoBack,
-                
               }}
             >
               Cast
@@ -120,10 +115,9 @@ class MovieDetailsPage extends Component {
               className={styles.AddInfo_link}
               activeClassName={styles.AddInfo_active_link}
               to={{
-                pathname: `${this.props.match.url}/reviews`,
-                search: this.props.search,
+                pathname: `${match.url}/reviews`,
+                search: search,
                 state: internalLinksGoBack,
-                
               }}
             >
               Reviews
@@ -131,16 +125,8 @@ class MovieDetailsPage extends Component {
           </div>
 
           <Switch>
-            <Route
-              exact
-              path={`${this.props.match.url}/cast`}
-              component={Cast}
-            />
-            <Route
-              exact
-              path={`${this.props.match.url}/reviews`}
-              component={Reviews}
-            />
+            <Route exact path={`${match.url}/cast`} component={Cast} />
+            <Route exact path={`${match.url}/reviews`} component={Reviews} />
           </Switch>
         </div>
       </>

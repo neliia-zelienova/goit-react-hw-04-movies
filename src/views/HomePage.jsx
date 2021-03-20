@@ -8,12 +8,9 @@ class Home extends Component {
     movies: null,
   };
   async componentDidMount() {
-    await getPopular()
-      .then(({ results }) => {
-        this.setState({ movies: results });
-      })
-      .catch(error => console.log(error))
-      .finally();
+    await getPopular().then(({ results }) => {
+      this.setState({ movies: results });
+    });
   }
 
   render() {

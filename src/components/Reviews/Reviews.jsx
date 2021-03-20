@@ -11,9 +11,9 @@ class MovieReviews extends Component {
   async componentDidMount() {
     const movieId = this.parseUrl(this.props.match.url);
     if (movieId) {
-      await getMovieReviews(movieId)
-        .then(({ results }) => this.setState({ reviews: results }))
-        .catch(error => console.log(error));
+      await getMovieReviews(movieId).then(({ results }) =>
+        this.setState({ reviews: results }),
+      );
     }
   }
 
@@ -32,7 +32,11 @@ class MovieReviews extends Component {
   render() {
     return (
       <div>
-        {!this.state.reviews.length && <p>No reviews for this movie</p>}
+        {!this.state.reviews.length && (
+          <p className={styles.NoReviews_message}>
+            No reviews for this movie yet...
+          </p>
+        )}
         {this.state.reviews.length > 0 && (
           <ul>
             {this.state.reviews.map(review => {

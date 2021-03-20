@@ -10,13 +10,10 @@ class MovieCast extends Component {
 
   async componentDidMount() {
     const movieId = this.parseUrl(this.props.match.url);
-    await getMovieCast(movieId)
-      .then(({ cast }) => this.setState({ cast }))
-      .catch(error => console.log(error));
+    await getMovieCast(movieId).then(({ cast }) => this.setState({ cast }));
   }
 
   parseUrl(url) {
-    console.log(url);
     const pasredData = url.match('\\d+');
     if (pasredData) return pasredData[0];
   }

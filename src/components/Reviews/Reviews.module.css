@@ -30,3 +30,8 @@
 .Review_Container:not(:last-child) {
   margin-bottom: 30px;
 }
+
+.NoReviews_message {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
