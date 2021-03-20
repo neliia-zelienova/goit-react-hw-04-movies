@@ -23,6 +23,7 @@ class Movies extends Component {
 
   handleSubmit = () => {
     if (this.state.query) {
+      console.log('this.state.query', this.state.query);
       searchMovie(this.state.query).then(({ results }) =>
         this.setState({ movies: results, emptyResponce: results.length === 0 }),
       );
@@ -31,7 +32,7 @@ class Movies extends Component {
 
   handleInput = e => {
     this.setState({
-      query: e.currentTarget.value.replace(' ', '+'),
+      query: e.currentTarget.value.replaceAll(' ', '+'),
     });
   };
 
