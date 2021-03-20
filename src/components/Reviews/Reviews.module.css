@@ -1,0 +1,32 @@
+.Autor_Name {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.Creation_Date {
+  color: darkgray;
+  margin-bottom: 15px;
+}
+
+.Overview_Text > a {
+  cursor: pointer;
+  color: darkorange;
+}
+.Overview_Text > a:hover {
+  cursor: pointer;
+  color: darkorange;
+  text-decoration: underline;
+}
+
+.Review_Container {
+  padding: 10px;
+}
+
+.Review_Container:nth-child(even) {
+  background-color: rgb(245, 189, 111, 0.3);
+  border-radius: 5px;
+}
+
+.Review_Container:not(:last-child) {
+  margin-bottom: 30px;
+}

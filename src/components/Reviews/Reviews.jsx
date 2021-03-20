@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getMovieReviews } from '../../utils/apiServices';
-import styles from './MovieReviews.module.css';
+import styles from './Reviews.module.css';
 import Linkify from 'react-linkify';
 
 class MovieReviews extends Component {

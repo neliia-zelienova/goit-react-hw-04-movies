@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getMovieCast } from '../../utils/apiServices';
-import styles from './MovieCast.module.css';
+import styles from './Cast.module.css';
 import noUserImg from '../../images/no-user-photo.jpg';
 
 class MovieCast extends Component {

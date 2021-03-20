@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import styles from './MovieDetailsPage.module.css';
 import { getMovieById } from '../../utils/apiServices';
-import MovieCast from '../../components/MovieCast';
-import MovieReviews from '../../components/MovieReviews';
+import Cast from '../../components/Cast';
+import Reviews from '../../components/Reviews';
 import noPosterImg from '../../images/poster_no.png';
+import routes from '../../routes';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -49,8 +50,20 @@ class MovieDetailsPage extends Component {
     return genreName.join(', ');
   };
 
+  handleGoBack = () => {
+    const { location, history } = this.props;
+    if (location.state && location.state.from) {
+      return history.push(location.state.from);
+    }
+    return history.push(routes.home);
+  };
+
   render() {
     const genresString = this.getGenresString();
+    const internalLinksGoBack =
+      this.props.location.state 
+        ? this.props.location.state
+        : 'underfind';
     const {
       poster_path,
       original_title,
@@ -64,7 +77,13 @@ class MovieDetailsPage extends Component {
     const releaseYear = release_date.slice(0, 4);
     return (
       <>
-      <button type="button" onClick={() => this.props.history.push(this.props.location.state.from)}>Go back</button>
+        <button
+          type="button"
+          onClick={this.handleGoBack}
+          className={styles.GoBack_button}
+        >
+          <span className={styles.GoBack_button_label}>Go back</span>
+        </button>
         <div className={styles.MainInfo_Container}>
           <div className={styles.Poster_Container}>
             <img className={styles.Movie_Poster} src={posterURL} alt="" />
@@ -87,7 +106,12 @@ class MovieDetailsPage extends Component {
               exact
               className={styles.AddInfo_link}
               activeClassName={styles.AddInfo_active_link}
-              to={`${this.props.match.url}/cast`}
+              to={{
+                pathname: `${this.props.match.url}/cast`,
+                search: this.props.search,
+                state: internalLinksGoBack,
+                
+              }}
             >
               Cast
             </NavLink>
@@ -95,7 +119,12 @@ class MovieDetailsPage extends Component {
               exact
               className={styles.AddInfo_link}
               activeClassName={styles.AddInfo_active_link}
-              to={`${this.props.match.url}/reviews`}
+              to={{
+                pathname: `${this.props.match.url}/reviews`,
+                search: this.props.search,
+                state: internalLinksGoBack,
+                
+              }}
             >
               Reviews
             </NavLink>
@@ -105,12 +134,12 @@ class MovieDetailsPage extends Component {
             <Route
               exact
               path={`${this.props.match.url}/cast`}
-              component={MovieCast}
+              component={Cast}
             />
             <Route
               exact
               path={`${this.props.match.url}/reviews`}
-              component={MovieReviews}
+              component={Reviews}
             />
           </Switch>
         </div>

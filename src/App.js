@@ -6,19 +6,20 @@ import MoviesPage from './views/MoviesPage';
 import MovieDetailsPage from './views/MovieDetailsPage/MovieDetailsPage';
 import AppBar from './components/AppBar';
 import Container from './components/Container';
+import routes from './routes';
 
 class App extends Component {
   render() {
     return (
       <>
-      <AppBar/>
-      <Container>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies" component={MoviesPage} />
-          <Route path="/movies/:movieID" component={MovieDetailsPage} />
-        </Switch>
-      </Container>
+        <AppBar />
+        <Container>
+          <Switch>
+            <Route exact path={routes.home} component={HomePage} />
+            <Route exact path={routes.movies} component={MoviesPage} />
+            <Route path={routes.movieDetails} component={MovieDetailsPage} />
+          </Switch>
+        </Container>
       </>
     );
   }

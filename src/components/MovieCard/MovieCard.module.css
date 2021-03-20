@@ -8,7 +8,6 @@
 .MovieTitle {
   color: darkorange;
   font-weight: 500;
-  padding-bottom: 15px;
   width: 200px;
   overflow-wrap: normal;
 }
@@ -18,6 +17,6 @@
   padding-right: 20px;
 }
 
-.MovieDate{
+.MovieDate {
   color: dimgray;
 }

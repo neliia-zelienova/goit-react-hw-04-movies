@@ -1,49 +1,83 @@
-.MainInfo_Container{
-    display: flex;
-    flex-direction: row;
+.MainInfo_Container {
+  display: flex;
+  flex-direction: row;
 }
 
-.Poster_Container{
-    width: 400px;
-    margin-right: 20px;
+.Poster_Container {
+  width: 400px;
+  margin-right: 20px;
 }
 
-.Movie_Poster{
-    width: 400px;
-    border-radius: 5px;
+.Movie_Poster {
+  width: 400px;
+  border-radius: 5px;
 }
 
-.AddInfo_container{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
+.AddInfo_container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
 }
 
-.AddInfo_link:not(:last-child){
-    margin-right: 20px;
+.AddInfo_link:not(:last-child) {
+  margin-right: 20px;
 }
 
-.AddInfo_active_link{
-    font-weight: 600;
+.AddInfo_active_link {
+  font-weight: 600;
 }
 
-.AddInfo_link::after{
-    content: '';
-    display: block;
-    position: center;
-    background-color: orange;
-    width: 100%;
-    height: 2px;
-    border-radius: 2px;
-    transform: scaleX(1);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.AddInfo_link::after {
+  content: '';
+  display: block;
+  position: center;
+  background-color: orange;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  transform: scaleX(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.AddInfo_link:hover::after{
-    transform: scaleX(0.5);
+.AddInfo_link:hover::after {
+  transform: scaleX(0.5);
 }
 
-.Movie_title, .Category_title{
-    color: darkorange;
+.Movie_title,
+.Category_title {
+  color: darkorange;
+}
 
+.GoBack_button {
+  margin-bottom: 15px;
+  /* background-color: orange; */
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 0;
+  background-image: url('../../images/back-button.svg');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.GoBack_button:hover {
+  opacity: 1;
+}
+
+.GoBack_button_label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
 }
